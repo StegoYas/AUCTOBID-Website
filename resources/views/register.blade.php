@@ -21,17 +21,6 @@
         <form class="w-[80%] max-w-md space-y-4">
             <h2 class="text-3xl font-bold text-[#743f00]">Create Account</h2>
 
-            <div class="flex gap-4">
-                <label class="inline-flex items-center">
-                    <input type="radio" name="gender" class="form-radio text-[#743f00]">
-                    <span class="ml-2 text-[#743f00]">Laki-laki</span>
-                </label>
-                <label class="inline-flex items-center">
-                    <input type="radio" name="gender" class="form-radio text-[#743f00]">
-                    <span class="ml-2 text-[#743f00]">Perempuan</span>
-                </label>
-            </div>
-
             <div>
                 <label class="block text-sm font-semibold text-[#743f00]">Nama Lengkap</label>
                 <input type="text" placeholder="User_123"
@@ -50,11 +39,6 @@
                     class="w-full px-4 py-2 mt-1 border rounded-md bg-[#e9c176] focus:outline-none focus:ring-2 focus:ring-[#743f00]">
             </div>
 
-            <div>
-                <label class="block text-sm font-semibold text-[#743f00]">Confirm Password</label>
-                <input type="password" placeholder="e.g. Example2006"
-                    class="w-full px-4 py-2 mt-1 border rounded-md bg-[#e9c176] focus:outline-none focus:ring-2 focus:ring-[#743f00]">
-            </div>
 
             <button type="submit"
                 class="w-full bg-[#e9c176] text-[#743f00] font-semibold py-2 rounded-md shadow hover:shadow-lg">Login</button>
