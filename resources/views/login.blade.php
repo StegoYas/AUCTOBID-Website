@@ -11,9 +11,10 @@
             <img src="https://cdn-icons-png.flaticon.com/512/2329/2329108.png" class="w-20 mb-5">
             <h1 class="text-white text-3xl font-bold">Login</h1>
         </div>
-        <div class="text-white text-sm">
+        <div class="text-white text-sm space-y-2">
             <p>Belum punya akun?</p>
-            <a href="{{ route('register') }}" class="underline">Create Account</a>
+            <a href="{{ route('register') }}" class="underline block">Create Account</a>
+            <a href="{{ route('landing') }}" class="underline block">← Kembali ke Landing Page</a>
         </div>
     </div>
     <div class="w-1/2 flex items-center justify-center">
