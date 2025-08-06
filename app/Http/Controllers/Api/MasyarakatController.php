@@ -111,4 +111,15 @@ class MasyarakatController extends Controller
             ]
         ], 200);
     }
+    public function logout(Request $request)
+{
+    // Hapus token yang sedang digunakan
+    $request->user()->currentAccessToken()->delete();
+
+    return response()->json([
+        'success' => true,
+        'message' => 'Logged out successfully'
+    ], 200);
+}
+
 }

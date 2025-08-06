@@ -1,3 +1,6 @@
+@extends('layouts.app')
+
+@section('content')
 
 <!DOCTYPE html>
 <html lang="en">
@@ -9,16 +12,7 @@
 </head>
 <body class="bg-white min-h-screen">
 
-    <!-- Navbar -->
-    <nav class="bg-[#d1a75e] flex items-center justify-between px-8 py-4 shadow-lg">
-        <div>
-            <span class="font-semibold text-2xl text-white tracking-wide">AuctoBid</span>
-        </div>
-        <div class="flex space-x-6">
-            <a href="#" class="text-white hover:text-gray-100 transition duration-200">Home</a>
-            <a href="#contact" class="text-white hover:text-gray-100 transition duration-200">Contact</a>
-        </div>
-    </nav>
+    
 
     <!-- Banner -->
     <section class="bg-[#d4a856] text-white py-20 px-4 text-center">
@@ -112,6 +106,7 @@
         </div>
     </div>
 </section>
-
 </body>
 </html>
+
+@endsection

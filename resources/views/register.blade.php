@@ -17,32 +17,91 @@
             <a href="{{ route('landing') }}" class="underline block">← Kembali ke Landing Page</a>
         </div>
     </div>
+
     <div class="w-1/2 flex items-center justify-center">
-        <form class="w-[80%] max-w-md space-y-4">
+        <form id="registerForm" class="w-[80%] max-w-md space-y-4">
             <h2 class="text-3xl font-bold text-[#743f00]">Create Account</h2>
 
             <div>
                 <label class="block text-sm font-semibold text-[#743f00]">Nama Lengkap</label>
-                <input type="text" placeholder="User_123"
+                <input type="text" name="nama_lengkap" required placeholder="Contoh: Bayu Pratama"
+                    class="w-full px-4 py-2 mt-1 border rounded-md bg-[#e9c176] focus:outline-none focus:ring-2 focus:ring-[#743f00]">
+            </div>
+
+            <div>
+                <label class="block text-sm font-semibold text-[#743f00]">Username</label>
+                <input type="text" name="username" required placeholder="bayu123"
                     class="w-full px-4 py-2 mt-1 border rounded-md bg-[#e9c176] focus:outline-none focus:ring-2 focus:ring-[#743f00]">
             </div>
 
             <div>
                 <label class="block text-sm font-semibold text-[#743f00]">Email</label>
-                <input type="email" placeholder="e.g. example@mail.com"
+                <input type="email" name="email" required placeholder="example@mail.com"
+                    class="w-full px-4 py-2 mt-1 border rounded-md bg-[#e9c176] focus:outline-none focus:ring-2 focus:ring-[#743f00]">
+            </div>
+
+            <div>
+                <label class="block text-sm font-semibold text-[#743f00]">Telp</label>
+                <input type="text" name="telp" required placeholder="08123456789"
                     class="w-full px-4 py-2 mt-1 border rounded-md bg-[#e9c176] focus:outline-none focus:ring-2 focus:ring-[#743f00]">
             </div>
 
             <div>
                 <label class="block text-sm font-semibold text-[#743f00]">Password</label>
-                <input type="password" placeholder="e.g. Example2006"
+                <input type="password" name="password" required placeholder="********"
                     class="w-full px-4 py-2 mt-1 border rounded-md bg-[#e9c176] focus:outline-none focus:ring-2 focus:ring-[#743f00]">
             </div>
-
-
+            <div>
+    <label class="block text-sm font-semibold text-[#743f00]">Konfirmasi Password</label>
+    <input type="password" name="password_confirmation" placeholder="********"
+        class="w-full px-4 py-2 mt-1 border rounded-md bg-[#e9c176] focus:outline-none focus:ring-2 focus:ring-[#743f00]">
+</div>
             <button type="submit"
-                class="w-full bg-[#e9c176] text-[#743f00] font-semibold py-2 rounded-md shadow hover:shadow-lg">Login</button>
+                class="w-full bg-[#e9c176] text-[#743f00] font-semibold py-2 rounded-md shadow hover:shadow-lg">Register</button>
         </form>
-    </div>
+
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const form = this;
+
+            const data = {
+                nama_lengkap: form.nama_lengkap.value,
+                username: form.username.value,
+                email: form.email.value,
+                telp: form.telp.value,
+                password: form.password.value,
+                password_confirmation: form.password_confirmation.value,
+            };
+
+            try {
+                const response = await fetch('/api/masyarakat/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    alert('Registrasi berhasil!');
+                    // window.location.href = '/login';
+                } else {
+                    let errorMessages = '';
+                    for (let field in result.errors) {
+                        errorMessages += `${result.errors[field][0]}\n`;
+                    }
+                    alert(errorMessages || result.message || 'Registrasi gagal');
+                }
+            } catch (error) {
+                console.error(error);
+                alert('Terjadi kesalahan saat registrasi.');
+            }
+        });
+    </script>
 </body>
 </html>

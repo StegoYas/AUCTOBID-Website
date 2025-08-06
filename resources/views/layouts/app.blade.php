@@ -1,4 +1,3 @@
-<!-- resources/views/layouts/app.blade.php -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,26 +8,56 @@
 </head>
 <body class="bg-gray-100">
 
-    <!-- Navbar -->
-    <nav class="bg-[#d1a75e] flex items-center justify-between px-8 py-4 shadow-lg">
-        <div>
-            <span class="font-semibold text-2xl text-white tracking-wide">AuctoBid</span>
-        </div>
-        <div class="flex space-x-6">
-            <a href="{{ url('/') }}" class="text-white hover:text-gray-100 transition duration-200">Home</a>
-            <a href="{{ url('/#contact') }}" class="text-white hover:text-gray-100 transition duration-200">Contact</a>
-        </div>
-    </nav>
+<!-- NAVBAR -->
+<nav class="flex justify-between items-center px-6 py-4 bg-[#d4a856] text-white">
+  <div class="text-2xl font-bold">AuctoBid</div>
+  <ul class="flex space-x-6 items-center">
+    <li><a href="/" class="hover:underline">Home</a></li>
+    <li><a href="/#contact" class="hover:underline">Contact</a></li>
+    <li><a href="/dashboard" class="hover:underline" id="dashboardLink">Dashboard</a></li>
+    <li id="logoutSection" class="hidden">
+      <button onclick="logout()" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded">
+        Logout
+      </button>
+    </li>
+  </ul>
+</nav>
 
-    <!-- Content -->
-    <main class="p-6">
-        @yield('content')
-    </main>
+<!-- CONTENT -->
+<main class="p-6">
+    @yield('content')
+</main>
 
-    <!-- Footer -->
-    <footer class="text-center py-4 bg-white shadow mt-10">
-        <p class="text-gray-500 text-sm">© {{ date('Y') }} AuctoBid. All rights reserved.</p>
-    </footer>
+<!-- FOOTER -->
+<footer class="text-center py-4 bg-white shadow mt-10">
+    <p class="text-gray-500 text-sm">© {{ date('Y') }} AuctoBid. All rights reserved.</p>
+</footer>
+
+<!-- SCRIPT -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+  const token = localStorage.getItem('token');
+  const logoutSection = document.getElementById('logoutSection');
+  const dashboardLink = document.getElementById('dashboardLink');
+
+  if (token) {
+    logoutSection.classList.remove('hidden');
+    dashboardLink.classList.remove('hidden');
+  } else {
+    logoutSection.classList.add('hidden');
+    dashboardLink.classList.add('hidden');
+  }
+});
+
+
+  function logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('role');
+    localStorage.removeItem('user');
+    alert("Berhasil logout.");
+    window.location.href = "/"; // Redirect ke halaman utama
+  }
+</script>
 
 </body>
 </html>
