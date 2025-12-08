@@ -1,9 +1,8 @@
 # AUCTOBID - Laravel Backend & Admin Panel
 
 ![AUCTOBID Logo](auctobid-logo/AUCTOBID-Logo.png)
-![AUCTOBID Favicon](auctobid-logo/AUCTOBID-Favicon.png)
 
-**Sistem Pelelangan Online dengan Tema Medieval Fantasy**
+**Website AUCTOBID - Sistem Pelelangan Online.**
 
 ---
 
@@ -15,23 +14,23 @@ AUCTOBID adalah sistem lelang online berbasis web yang dibangun menggunakan Lara
 
 Medieval Fantasy dengan palet warna:
 
--   **Primary**: `#8B4513` (Saddle Brown)
--   **Secondary**: `#D4AF37` (Gold)
--   **Background**: `#FFF8DC` (Cornsilk/Parchment)
--   **Text**: `#2F4F4F` (Dark Slate)
--   **Font**: Cinzel (heading), Merriweather (body)
+-   **Primary**: `#8B4513` (Saddle Brown).
+-   **Secondary**: `#D4AF37` (Gold).
+-   **Background**: `#FFF8DC` (Cornsilk/Parchment).
+-   **Text**: `#2F4F4F` (Dark Slate).
+-   **Font**: Cinzel (heading), Merriweather (body).
 
 ---
 
 ## 🛠️ Tech Stack
 
--   **Framework**: Laravel 12
--   **Database**: MySQL / MariaDB
--   **Authentication**: Laravel Sanctum
--   **WebSocket**: Laravel Reverb
--   **Export**: Laravel Excel, DomPDF
--   **Styling**: Tailwind CSS
--   **Templating**: Blade
+-   **Framework**: Laravel 12.
+-   **Database**: MySQL / MariaDB.
+-   **Authentication**: Laravel Sanctum.
+-   **WebSocket**: Laravel Reverb.
+-   **Export**: Laravel Excel, DomPDF.
+-   **Styling**: Tailwind CSS.
+-   **Templating**: Blade.
 
 ---
 
@@ -49,22 +48,22 @@ Medieval Fantasy dengan palet warna:
 
 ### Admin Panel
 
--   ✅ Dashboard statistik real-time
--   ✅ Manajemen pengguna (approve/suspend)
--   ✅ Manajemen kategori & kondisi barang
--   ✅ Persetujuan barang (approve/reject)
--   ✅ Manajemen lelang (buat/tutup)
--   ✅ Laporan (export Excel/PDF)
--   ✅ Pengaturan sistem
+-   ✔️ Dashboard statistik real-time
+-   ✔️ Manajemen pengguna (approve/suspend)
+-   ✔️ Manajemen kategori & kondisi barang
+-   ✔️ Persetujuan barang (approve/reject)
+-   ✔️ Manajemen lelang (buat/tutup)
+-   ✔️ Laporan (export Excel/PDF)
+-   ✔️ Pengaturan sistem
 
 ### REST API
 
--   ✅ Autentikasi (login, register, logout)
--   ✅ CRUD kategori & kondisi
--   ✅ Submit & kelola barang
--   ✅ Lelang & bidding real-time
--   ✅ Notifikasi pengguna
--   ✅ Pembayaran (simulasi)
+-   ✔️ Autentikasi (login, register, logout)
+-   ✔️ CRUD kategori & kondisi
+-   ✔️ Submit & kelola barang
+-   ✔️ Lelang & bidding real-time
+-   ✔️ Notifikasi pengguna
+-   ✔️ Pembayaran (simulasi)
 
 ---
 
@@ -95,7 +94,7 @@ php artisan key:generate
 # DB_PORT=3306
 # DB_DATABASE=auctobid
 # DB_USERNAME=root
-# DB_PASSWORD=root
+# DB_PASSWORD=
 
 # 5. Jalankan migrasi database
 php artisan migrate
@@ -210,10 +209,10 @@ Logo disimpan di folder `auctobid-logo/`:
 
 ---
 
-## 📄 Lisensi
+## 📄 License
 
-Proyek ini dibuat untuk keperluan pendidikan TB Kelas 12.
+**© 2025 AUCTOBID - All rights reserved | Developed by StegoYas**
 
 ---
 
-**© 2024 AUCTOBID Team**
+![AUCTOBID Favicon](auctobid-logo/AUCTOBID-Favicon.png)
