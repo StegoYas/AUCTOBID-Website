@@ -1,12 +1,280 @@
-@import 'tailwindcss';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
-@source '../../storage/framework/views/*.php';
-@source "../**/*.blade.php";
-@source "../**/*.js";
-@source "../**/*.vue";
+/* Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap");
 
-@theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+/* Base Styles */
+body {
+    @apply font-merriweather bg-medieval-cream text-medieval-slate;
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    @apply font-cinzel font-semibold text-medieval-brown;
+}
+
+/* Medieval Theme Components */
+@layer components {
+    /* Buttons */
+    .btn {
+        @apply inline-flex items-center justify-center px-4 py-2 rounded-lg font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2;
+    }
+
+    .btn-primary {
+        @apply bg-medieval-brown text-white hover:bg-medieval-dark-brown focus:ring-medieval-brown shadow-medieval;
+    }
+
+    .btn-secondary {
+        @apply bg-medieval-gold text-medieval-slate hover:bg-medieval-light-gold focus:ring-medieval-gold shadow-gold;
+    }
+
+    .btn-outline {
+        @apply border-2 border-medieval-brown text-medieval-brown hover:bg-medieval-brown hover:text-white;
+    }
+
+    .btn-danger {
+        @apply bg-red-600 text-white hover:bg-red-700 focus:ring-red-500;
+    }
+
+    .btn-success {
+        @apply bg-green-600 text-white hover:bg-green-700 focus:ring-green-500;
+    }
+
+    .btn-sm {
+        @apply px-3 py-1.5 text-sm;
+    }
+
+    .btn-lg {
+        @apply px-6 py-3 text-lg;
+    }
+
+    /* Cards */
+    .card {
+        @apply bg-white rounded-xl shadow-md overflow-hidden border border-medieval-gold/20;
+    }
+
+    .card-header {
+        @apply px-6 py-4 border-b border-medieval-gold/20 bg-gradient-to-r from-medieval-parchment to-white;
+    }
+
+    .card-body {
+        @apply p-6;
+    }
+
+    .card-footer {
+        @apply px-6 py-4 bg-medieval-parchment/30 border-t border-medieval-gold/20;
+    }
+
+    /* Form Inputs */
+    .form-input {
+        @apply w-full px-4 py-2 border border-medieval-gold/30 rounded-lg bg-white text-medieval-slate placeholder-medieval-slate/50 focus:border-medieval-gold focus:ring-2 focus:ring-medieval-gold/20 transition-colors;
+    }
+
+    .form-label {
+        @apply block text-sm font-medium text-medieval-brown mb-1;
+    }
+
+    .form-error {
+        @apply text-red-600 text-sm mt-1;
+    }
+
+    /* Tables */
+    .table-medieval {
+        @apply min-w-full divide-y divide-medieval-gold/20;
+    }
+
+    .table-medieval thead {
+        @apply bg-gradient-to-r from-medieval-brown to-medieval-dark-brown;
+    }
+
+    .table-medieval thead th {
+        @apply px-6 py-3 text-left text-xs font-cinzel font-semibold text-white uppercase tracking-wider;
+    }
+
+    .table-medieval tbody {
+        @apply bg-white divide-y divide-medieval-gold/10;
+    }
+
+    .table-medieval tbody tr {
+        @apply hover:bg-medieval-parchment/30 transition-colors;
+    }
+
+    .table-medieval tbody td {
+        @apply px-6 py-4 whitespace-nowrap text-sm text-medieval-slate;
+    }
+
+    /* Navigation */
+    .nav-link {
+        @apply flex items-center px-4 py-3 text-medieval-slate hover:bg-medieval-gold/20 hover:text-medieval-brown rounded-lg transition-colors;
+    }
+
+    .nav-link.active {
+        @apply bg-medieval-brown text-white hover:bg-medieval-dark-brown hover:text-white;
+    }
+
+    /* Badges */
+    .badge {
+        @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+    }
+
+    .badge-pending {
+        @apply bg-yellow-100 text-yellow-800;
+    }
+
+    .badge-approved,
+    .badge-active {
+        @apply bg-green-100 text-green-800;
+    }
+
+    .badge-rejected,
+    .badge-suspended,
+    .badge-ended {
+        @apply bg-red-100 text-red-800;
+    }
+
+    .badge-scheduled {
+        @apply bg-blue-100 text-blue-800;
+    }
+
+    .badge-sold {
+        @apply bg-purple-100 text-purple-800;
+    }
+
+    /* Stats Card */
+    .stat-card {
+        @apply bg-white rounded-xl p-6 border border-medieval-gold/20 shadow-md hover:shadow-gold transition-shadow;
+    }
+
+    .stat-card-icon {
+        @apply w-12 h-12 rounded-full bg-medieval-gold/20 flex items-center justify-center text-medieval-brown;
+    }
+
+    .stat-card-value {
+        @apply text-3xl font-cinzel font-bold text-medieval-brown mt-4;
+    }
+
+    .stat-card-label {
+        @apply text-sm text-medieval-slate/70 mt-1;
+    }
+
+    /* Sidebar */
+    .sidebar {
+        @apply fixed left-0 top-0 h-full w-64 bg-white border-r border-medieval-gold/20 shadow-xl flex flex-col;
+    }
+
+    .sidebar-header {
+        @apply p-4 border-b border-medieval-gold/20 bg-gradient-to-r from-medieval-brown to-medieval-dark-brown;
+    }
+
+    .sidebar-nav {
+        @apply flex-1 p-4 space-y-1 overflow-y-auto;
+    }
+
+    .sidebar-footer {
+        @apply p-4 border-t border-medieval-gold/20 bg-medieval-parchment/30;
+    }
+
+    /* Header */
+    .main-header {
+        @apply h-16 bg-white border-b border-medieval-gold/20 flex items-center justify-between px-6 shadow-sm;
+    }
+
+    /* Alert boxes */
+    .alert {
+        @apply p-4 rounded-lg mb-4;
+    }
+
+    .alert-success {
+        @apply bg-green-50 border border-green-200 text-green-800;
+    }
+
+    .alert-error {
+        @apply bg-red-50 border border-red-200 text-red-800;
+    }
+
+    .alert-warning {
+        @apply bg-yellow-50 border border-yellow-200 text-yellow-800;
+    }
+
+    .alert-info {
+        @apply bg-blue-50 border border-blue-200 text-blue-800;
+    }
+
+    /* Medieval decorative border */
+    .medieval-border {
+        @apply border-2 border-medieval-gold rounded-lg relative;
+    }
+
+    .medieval-border::before {
+        content: "";
+        @apply absolute -top-1 -left-1 w-3 h-3 border-t-2 border-l-2 border-medieval-gold;
+    }
+
+    .medieval-border::after {
+        content: "";
+        @apply absolute -bottom-1 -right-1 w-3 h-3 border-b-2 border-r-2 border-medieval-gold;
+    }
+
+    /* Modal */
+    .modal-backdrop {
+        @apply fixed inset-0 bg-black/50 z-40;
+    }
+
+    .modal {
+        @apply fixed inset-0 z-50 flex items-center justify-center p-4;
+    }
+
+    .modal-content {
+        @apply bg-white rounded-xl shadow-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto;
+    }
+
+    /* Dropdown */
+    .dropdown {
+        @apply absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-xl border border-medieval-gold/20 py-1 z-50;
+    }
+
+    .dropdown-item {
+        @apply block px-4 py-2 text-sm text-medieval-slate hover:bg-medieval-parchment;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fadeIn {
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    @apply bg-medieval-cream;
+}
+
+::-webkit-scrollbar-thumb {
+    @apply bg-medieval-brown/50 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    @apply bg-medieval-brown;
 }
