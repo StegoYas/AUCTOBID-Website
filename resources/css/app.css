@@ -1,9 +1,14 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@config "../../tailwind.config.js";
 
 /* Google Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap");
+
+@theme {
+    --font-merriweather: Merriweather, serif;
+    --font-cinzel: Cinzel, serif;
+    /* Map other theme values if needed, but linking config should handle most */
+}
 
 /* Base Styles */
 body {
