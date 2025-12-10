@@ -214,4 +214,52 @@ class UserController extends Controller
 
         return redirect()->route('users.index')->with('success', 'User berhasil dihapus.');
     }
+    /**
+     * Show trashed users
+     */
+    public function trashed(Request $request): View
+    {
+        $query = User::onlyTrashed();
+
+        if ($request->has('search')) {
+            $search = $request->search;
+            $query->where(function ($q) use ($search) {
+                $q->where('name', 'like', "%{$search}%")
+                    ->orWhere('email', 'like', "%{$search}%");
+            });
+        }
+
+        $users = $query->orderBy('deleted_at', 'desc')->paginate(15);
+
+        return view('users.trashed', compact('users'));
+    }
+
+    /**
+     * Restore trashed user
+     */
+    public function restore($id): RedirectResponse
+    {
+        $user = User::onlyTrashed()->findOrFail($id);
+        
+        $user->restore();
+        
+        // If user was rejected, set to pending to allow re-evaluation
+        if ($user->status === 'rejected') {
+            $user->update(['status' => 'pending']);
+        }
+
+        return redirect()->route('users.index')->with('success', 'User berhasil dipulihkan.');
+    }
+
+    /**
+     * Force delete user
+     */
+    public function forceDelete($id): RedirectResponse
+    {
+        $user = User::onlyTrashed()->findOrFail($id);
+        
+        $user->forceDelete();
+
+        return back()->with('success', 'User berhasil dihapus permanen.');
+    }
 }

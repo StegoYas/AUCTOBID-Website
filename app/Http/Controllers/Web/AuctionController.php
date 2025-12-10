@@ -53,7 +53,7 @@ class AuctionController extends Controller
 
         $defaultDuration = Setting::getValue('default_auction_duration', 7);
 
-        return view('auctions.form', [
+        return view('auctions.create', [
             'auction' => null,
             'items' => $items,
             'defaultDuration' => $defaultDuration,

@@ -34,6 +34,9 @@ Route::middleware(['auth', 'role:admin,petugas'])->group(function () {
     Route::middleware('role:admin')->group(function () {
         Route::get('/users', [UserController::class, 'index'])->name('users.index');
         Route::get('/users/pending', [UserController::class, 'pending'])->name('users.pending');
+        Route::get('/users/trashed', [UserController::class, 'trashed'])->name('users.trashed');
+        Route::post('/users/{id}/restore', [UserController::class, 'restore'])->name('users.restore');
+        Route::delete('/users/{id}/force-delete', [UserController::class, 'forceDelete'])->name('users.force-delete');
         Route::get('/users/create-petugas', [UserController::class, 'createPetugas'])->name('users.create-petugas');
         Route::post('/users/store-petugas', [UserController::class, 'storePetugas'])->name('users.store-petugas');
         Route::get('/users/{user}', [UserController::class, 'show'])->name('users.show');
