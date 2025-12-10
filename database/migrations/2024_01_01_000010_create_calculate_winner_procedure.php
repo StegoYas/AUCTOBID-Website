@@ -7,16 +7,11 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     * Note: Stored procedure is MySQL only. For SQLite, we skip this migration.
-     * The winner calculation logic is handled in the Auction model.
      */
     public function up(): void
     {
-        // Skip stored procedure for SQLite (not supported)
-        if (DB::connection()->getDriverName() === 'sqlite') {
-            // Create a placeholder comment - SQLite doesn't support stored procedures
-            // Winner calculation will be done via PHP/Eloquent
-            return;
+        if (DB::connection()->getDriverName() !== 'mysql') {
+            throw new \RuntimeException("Project requires MySQL - migration create_calculate_winner_procedure must run on MySQL.");
         }
 
         // MySQL stored procedure for calculating auction winner
@@ -98,8 +93,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        if (DB::connection()->getDriverName() !== 'sqlite') {
-            DB::unprepared('DROP PROCEDURE IF EXISTS calculate_auction_winner');
-        }
+        DB::unprepared('DROP PROCEDURE IF EXISTS calculate_auction_winner');
     }
 };
